@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iciclecreek.Json.Net.DependencyInjection", "Iciclecreek.Json.Net.DependencyInjection\Iciclecreek.Json.Net.DependencyInjection.csproj", "{FAA5875D-2DC5-43AE-8C29-157FA3AE115B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iciclecreek.Json.Net.DependencyInjection.Tests", "Iciclecreek.Json.Net.DependencyInjection.Tests\Iciclecreek.Json.Net.DependencyInjection.Tests.csproj", "{5F91D050-FC04-4E2C-9D95-6603FE271D09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAA5875D-2DC5-43AE-8C29-157FA3AE115B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA5875D-2DC5-43AE-8C29-157FA3AE115B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA5875D-2DC5-43AE-8C29-157FA3AE115B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA5875D-2DC5-43AE-8C29-157FA3AE115B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F91D050-FC04-4E2C-9D95-6603FE271D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F91D050-FC04-4E2C-9D95-6603FE271D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F91D050-FC04-4E2C-9D95-6603FE271D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F91D050-FC04-4E2C-9D95-6603FE271D09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0CE339D-6BC0-47D8-9624-344A1657885B}
+	EndGlobalSection
+EndGlobal
