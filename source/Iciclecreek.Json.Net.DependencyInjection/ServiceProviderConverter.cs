@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Converters;
 
 namespace Iciclecreek.Json.Net.DependencyInjection
 {
@@ -51,15 +52,28 @@ namespace Iciclecreek.Json.Net.DependencyInjection
             return instance;
         }
 
-        // Override the WriteJson method to use the default serialization
+        /// <summary>
+        /// Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            // Use the default serialization
-            serializer.Serialize(writer, value);
+            throw new NotSupportedException("CustomCreationConverter should only be used while deserializing.");
         }
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="JsonConverter"/> can write JSON.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this <see cref="JsonConverter"/> can write JSON; otherwise, <c>false</c>.
+        /// </value>
+        public override bool CanWrite => false;
+
     }
 
-    public class ServiceProviderConverter<T> : JsonConverter<T>
+    public class ServiceProviderConverter<T> : CustomCreationConverter<T>
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -69,24 +83,10 @@ namespace Iciclecreek.Json.Net.DependencyInjection
             _serviceProvider = serviceProvider;
         }
 
-        // Override the ReadJson method to create an instance of T using the service provider and the JSON object
-        public override T? ReadJson(JsonReader reader, Type objectType, T? existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override T Create(Type objectType)
         {
             // Create an instance of T using the service provider and the JSON object as a constructor argument
-            var instance = ActivatorUtilities.CreateInstance<T>(_serviceProvider);
-
-            // Populate the instance with the JSON object
-            serializer.Populate(reader, instance!);
-
-            // Return the instance
-            return instance;
-        }
-
-        // Override the WriteJson method to use the default serialization
-        public override void WriteJson(JsonWriter writer, T? value, JsonSerializer serializer)
-        {
-            // Use the default serialization
-            serializer.Serialize(writer, value);
+            return ActivatorUtilities.CreateInstance<T>(_serviceProvider);
         }
     }
 }
